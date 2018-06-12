@@ -11,7 +11,7 @@ class knn:
     def run(self, dataset: pd.DataFrame()):
         xs = []
         ys = []
-        for i in range(1,75,1):
+        for i in range(1,50,1):
             model = KNeighborsClassifier(n_neighbors=i)
             y = dataset['species'].astype('category')
             X = dataset.drop(['species'], axis=1)
@@ -27,7 +27,9 @@ class knn:
         p = np.poly1d(z)
         plt.plot(xs, p(xs), 'r-')
         plt.ylim(ymax=1, ymin=0.5)
-
+        plt.ylabel("Accuracy")
+        plt.xlabel("K")
+        plt.title("KNN CV")
         plt.show()
 
 data = data()

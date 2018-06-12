@@ -27,7 +27,9 @@ class knn:
         z = np.polyfit(xs, ys, 1)
         p = np.poly1d(z)
         plt.plot(xs, p(xs), 'r-')
-
+        plt.ylabel("Accuracy")
+        plt.xlabel("K")
+        plt.title("KNN")
         plt.ylim(ymax=1, ymin=0.5)
         plt.show()
 
