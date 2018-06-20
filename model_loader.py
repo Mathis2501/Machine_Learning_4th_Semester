@@ -1,7 +1,6 @@
 from keras.models import Sequential, load_model
 from scipy import misc
 import numpy as np
-import Image
 import pandas as pd
 import glob as glob
 import matplotlib.pyplot as plt
@@ -26,7 +25,7 @@ model.load('cifar10_model_2.hdf5')
 #    image_list.append(im)
 
 
-image_list = map(misc.imread, glob.glob('images/Cars/*.png'))
+image_list = map(misc.imread, glob.glob('images/Planes/*.png'))
 
 for image in image_list:
     image = image[:,:,:3]

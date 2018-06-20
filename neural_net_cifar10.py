@@ -37,14 +37,14 @@ class neural_net_cifar10:
 
         model.add(Flatten())
         model.add(Dense(1024, activation='relu'))
-        model.add(Dropout(0.3))
+        model.add(Dropout(0.5))
         model.add(Dense(10, activation='softmax'))
 
         model.compile(optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0), loss='categorical_crossentropy', metrics=['accuracy'])
         model.fit(X_train / 255.0, to_categorical(y_train),
-                  batch_size=5000,
+                  batch_size=1024,
                   shuffle=True,
-                  epochs=100,
+                  epochs=1024,
                   validation_data=(X_test / 255.0, to_categorical(y_test)),
                   callbacks=[EarlyStopping(min_delta=0.001, patience=3)])
         print(model.predict(X_test))
@@ -53,7 +53,7 @@ class neural_net_cifar10:
         print('Loss: %.3f' % scores[0])
         print('Accuracy: %.3f' % scores[1])
 
-        #self.Save(model)
+        self.Save(model)
 #
 
 neural_net_cifar10().run()
